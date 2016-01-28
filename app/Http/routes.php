@@ -13,6 +13,8 @@
 
 Route::get('/', function () {
     return view('FrontEnd.home');
+
 });
 
 Route::get('home','PageController@home');
+Route::get('test','PageController@test');
