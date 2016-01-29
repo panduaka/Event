@@ -36,6 +36,9 @@
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
+    <link rel="stylesheet" href="/adminlte/plugins/fullcalendar/fullcalendar.min.css">
+    <link rel="stylesheet" href="/adminlte/plugins/fullcalendar/fullcalendar.print.css" media="print">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -321,17 +324,17 @@
             <!-- /.search form -->
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
-                <li class="header">MAIN NAVIGATION</li>
+               
                 <li class="active treeview">
                     <a href="#">
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
                     </a>
-                    <ul class="treeview-menu">
+                   <!--  <ul class="treeview-menu">
                         <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
                         <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-                    </ul>
+                    </ul> -->
                 </li>
-                <li class="treeview">
+                <!-- <li class="treeview">
                     <a href="#">
                         <i class="fa fa-files-o"></i>
                         <span>Layout Options</span>
@@ -343,8 +346,8 @@
                         <li><a href="/adminlte/pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
                         <li><a href="/adminlte/pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
                     </ul>
-                </li>
-                <li>
+                </li> -->
+               <!--  <li>
                     <a href="/adminlte/pages/widgets.html">
                         <i class="fa fa-th"></i> <span>Widgets</span> <small class="label pull-right bg-green">new</small>
                     </a>
@@ -361,8 +364,8 @@
                         <li><a href="/adminlte/pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
                         <li><a href="/adminlte/pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
                     </ul>
-                </li>
-                <li class="treeview">
+                </li> -->
+             <!--    <li class="treeview">
                     <a href="#">
                         <i class="fa fa-laptop"></i>
                         <span>UI Elements</span>
@@ -376,8 +379,8 @@
                         <li><a href="/adminlte/pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
                         <li><a href="/adminlte/pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
                     </ul>
-                </li>
-                <li class="treeview">
+                </li> -->
+             <!--    <li class="treeview">
                     <a href="#">
                         <i class="fa fa-edit"></i> <span>Forms</span>
                         <i class="fa fa-angle-left pull-right"></i>
@@ -387,8 +390,8 @@
                         <li><a href="/adminlte/pages/forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
                         <li><a href="/adminlte/pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
                     </ul>
-                </li>
-                <li class="treeview">
+                </li> -->
+            <!--     <li class="treeview">
                     <a href="#">
                         <i class="fa fa-table"></i> <span>Tables</span>
                         <i class="fa fa-angle-left pull-right"></i>
@@ -397,20 +400,26 @@
                         <li><a href="/adminlte/pages/tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
                         <li><a href="/adminlte/pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
                     </ul>
+                </li> -->
+                 <li>
+                    <a href="/adminlte/pages/calendar.html">
+                        <i class="fa fa-plus-square"></i> <span>Add User</span>
+                        
+                    </a>
                 </li>
                 <li>
-                    <a href="/adminlte/pages/calendar.html">
+                    <a href="{{url('calendar')}}">
                         <i class="fa fa-calendar"></i> <span>Calendar</span>
                         <small class="label pull-right bg-red">3</small>
                     </a>
                 </li>
                 <li>
-                    <a href="/adminlte/pages/mailbox/mailbox.html">
+                    <a href="{{url('mail')}}">
                         <i class="fa fa-envelope"></i> <span>Mailbox</span>
                         <small class="label pull-right bg-yellow">12</small>
                     </a>
                 </li>
-                <li class="treeview">
+             <!--    <li class="treeview">
                     <a href="#">
                         <i class="fa fa-folder"></i> <span>Examples</span>
                         <i class="fa fa-angle-left pull-right"></i>
@@ -425,8 +434,8 @@
                         <li><a href="/adminlte//examples/500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
                         <li><a href="/adminlte/pages/examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
                     </ul>
-                </li>
-                <li class="treeview">
+                </li> -->
+               <!--  <li class="treeview">
                     <a href="#">
                         <i class="fa fa-share"></i> <span>Multilevel</span>
                         <i class="fa fa-angle-left pull-right"></i>
@@ -453,13 +462,14 @@
                 <li class="header">LABELS</li>
                 <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
                 <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+                <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li> -->
             </ul>
         </section>
         <!-- /.sidebar -->
     </aside>
 
     <!-- Yielding subpage contents-->
+   
     @yield('content')
 
 
@@ -675,5 +685,7 @@
 <script src="/adminlte/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/adminlte/dist/js/demo.js"></script>
+  <!-- fullCalendar 2.2.5 -->
+<script src="/adminlte/plugins/fullcalendar/fullcalendar.min.js"></script>
 </body>
 </html>
