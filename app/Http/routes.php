@@ -13,4 +13,5 @@
 
 Route::get('/', function () {
     return view('admin');
+    //return view('welcome');
 });
