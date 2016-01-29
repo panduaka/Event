@@ -1,4 +1,7 @@
-body {	color:#666;	font:300 15px/15px Roboto,Arial,Helvetica;background-color:#fff;-webkit-font-smoothing:antialiased;}
+body {background:url(../images/background3.jpg)no-repeat;color:#666;font:300 15px/15px Roboto,Arial,Helvetica;-webkit-font-smoothing:antialiased; -webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;}
 
 a{color:#f6fcfc; text-decoration:none;}
 a:hover{color:#666;}
@@ -64,10 +67,15 @@ p{font-size:1em;line-height: 1.7em; margin-bottom: 1.7em;}
 .carousel-indicators{bottom: 0;}
 
 /*works*/
-#works{padding-top:6em;}
+#works{padding-top:5.5em;}
 #works figcaption a{border:1px solid #fff;margin-top: 1em;display: inline-block;color: #fff;padding: 0 2em;}
 #works figcaption a:hover{text-decoration: none;padding: 0 3em;}
 /*works*/
+
+/*recent*/
+#recent{padding-top:1em;}
+/*recent*/
+
 
 /*team*/
 .team figure{width: 100%;}

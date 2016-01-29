@@ -179,11 +179,11 @@
     </div>
 
    <div>
-       <h2 style="color: #00a9c6; margin-top: 2%;font-weight: initial;"> Recent Events <h2>
+       <h2 style="color: rgb(241, 247, 248); margin-top: 2%;font-weight: initial;"> Recent Events </h2>
    </div>
 
     <!-- Recent Events  Starts-->
-<div   class=" clearfix grid">
+<div class=" clearfix grid">
     <figure class="effect-oscar  wowload fadeIn">
         <img src="images/portfolio/1.jpg" alt="img01"/>
         <figcaption>

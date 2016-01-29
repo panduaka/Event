@@ -12,7 +12,21 @@
 */
 
 Route::get('/', function () {
+
     return view('FrontEnd.home');
+
+});
+
+Route::get('admin',function(){
+
+    return view('admin/admin_widget');
+});
+
+Route::get('mail', function () {
+    return view('admin/mail');
+});
+Route::get('calendar', function () {
+    return view('admin/calendar');
 
 });
 

@@ -10,7 +10,7 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
 
     <!-- font awesome -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <!-- bootstrap -->
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"/>
@@ -35,10 +35,10 @@
 <div class="topbar animated fadeInLeftBig"></div>
 
 <!-- Header Starts -->
-<div class="navbar-wrapper">
+<div class="navbar-wrapper" style="background-color: rgb(31, 43, 56)">
     <div class="container">
 
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="top-nav">
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="top-nav" style="background-color: rgb(31, 43, 56)">
             <div class="container">
                 <div class="navbar-header">
                     <!-- Logo Starts -->
@@ -77,7 +77,7 @@
 
 
 <div class="container">
-    @yield('content');
+    @yield('content')
 </div>
 
 <!-- Footer Starts -->
