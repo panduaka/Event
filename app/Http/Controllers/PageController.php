@@ -15,10 +15,5 @@ class PageController extends Controller
 
     }
 
-    public function test() {
-
-        return view('FrontEnd.test');
-
-    }
 
 }

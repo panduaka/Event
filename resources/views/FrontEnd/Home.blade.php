@@ -3,6 +3,9 @@
 
 @section('content')
 
+
+
+   {{-- Slider starts--}}
     <div id="works" style=" background-color:#fff;font-family:Arial, sans-serif">
 
         <!-- #region Jssor Slider Begin -->
@@ -177,13 +180,13 @@
 
         <!-- #endregion Jssor Slider End -->
     </div>
-
+{{--Slider ends--}}
    <div>
        <h2 style="color: rgb(241, 247, 248); margin-top: 2%;font-weight: initial;"> Recent Events </h2>
    </div>
 
     <!-- Recent Events  Starts-->
-<div class=" clearfix grid">
+<div class=" clearfix grid row">
     <figure class="effect-oscar  wowload fadeIn">
         <img src="images/portfolio/1.jpg" alt="img01"/>
         <figcaption>
@@ -287,29 +290,75 @@
 </div>
 <!-- Recent Events Ends -->
 
+<div class="row" >
+    <!-- Responsive calendar - START -->
+    <div class="responsive-calendar col-md-4">
+        <div class="controls row">
+            <div class="col-md-3  col-xs-4">
+                <a class="pull-left" data-go="prev"> <i class="fa fa-arrow-circle-o-left  fa-2x"></i>
+                    {{--<div class="btn"><i class="icon-chevron-left"></i></div>--}}
+                </a>
+            </div>
+            <div class="col-md-6  col-xs-4">
+                <h4><span data-head-year></span></h4><h4> <span data-head-month></span></h4>
+            </div>
+            <div class="col-md-3  col-xs-4">
+                <a class="pull-right" data-go="next"><i class="fa fa-arrow-circle-o-right  fa-2x"></i>
+                    {{--<div class="btn"><i class="icon-chevron-right"></i></div>--}}
+                </a>
+            </div>
+        </div><hr/>
+        <div class="day-headers">
+            <div class="day header">Mon</div>
+            <div class="day header">Tue</div>
+            <div class="day header">Wed</div>
+            <div class="day header">Thu</div>
+            <div class="day header">Fri</div>
+            <div class="day header">Sat</div>
+            <div class="day header">Sun</div>
+        </div>
+        <div class="days" data-group="days">
+            <!-- the place where days will be generated -->
+        </div>
+    </div>
+    <!-- Responsive calendar - END -->
 
-<!-- About Starts -->
-<div class="highlight-info">
-    <div class="overlay spacer">
-        <div class="container">
-            <div class="row text-center  wowload fadeInDownBig">
-                <div class="col-sm-3 col-xs-6">
-                   <a href="#"> <i class="fa fa-facebook-square fa-5x"></i></a>
-                </div>
-                <div class="col-sm-3 col-xs-6">
-                   <a href="#"> <i class="fa fa-instagram fa-5x"></i></a>
-                </div>
-                <div class="col-sm-3 col-xs-6">
-                    <a href="#"><i class="fa fa-google-plus fa-5x"></i></a>
-                </div>
-                <div class="col-sm-3 col-xs-6">
-                    <a href="#"><i class="fa fa-youtube-play fa-5x"></i></a>
+    <!-- Social Media Starts -->
+    <div class="highlight-info col-md-8">
+        <div class="overlay spacer">
+            <div class="container">
+                <div class="row text-center  wowload fadeInDownBig">
+                    <div class="col-sm-2 col-xs-6">
+                        <a href="#"> <i class="fa fa-facebook-square fa-5x"></i></a>
+                    </div>
+                    <div class="col-sm-2 col-xs-6">
+                        <a href="#"> <i class="fa fa-instagram fa-5x"></i></a>
+                    </div>
+                    <div class="col-sm-2 col-xs-6">
+                        <a href="#"><i class="fa fa-google-plus fa-5x"></i></a>
+                    </div>
+                    <div class="col-sm-2 col-xs-6">
+                        <a href="#"><i class="fa fa-youtube-play fa-5x"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Social Media Ends -->
 </div>
-<!-- About Ends -->
 
 
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".responsive-calendar").responsiveCalendar({
+                time: '2013-05',
+                events: {
+                    "2013-04-30": {"number": 5, "url": "http://w3widgets.com/responsive-slider"},
+                    "2013-04-26": {"number": 1, "url": "http://w3widgets.com"},
+                    "2013-05-03":{"number": 1},
+                    "2013-06-12": {}}
+            });
+        });
+    </script>
     @stop

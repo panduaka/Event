@@ -19,6 +19,10 @@
     <link rel="stylesheet" href="assets/animate/animate.css" />
     <link rel="stylesheet" href="assets/animate/set.css" />
 
+    {{--calendar--}}
+    <link href="calendar/css/responsive-calendar.css" rel="stylesheet" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Economica' rel='stylesheet' type='text/css'>
+
     <!-- gallery -->
     <link rel="stylesheet" href="assets/gallery/blueimp-gallery.min.css">
 
@@ -28,7 +32,8 @@
 
 
     <link rel="stylesheet" href="assets/style.css">
-
+    <!-- jquery -->
+    <script src="assets/jquery.js"></script>
 </head>
 
 <body>
@@ -90,8 +95,7 @@
 
 
 
-<!-- jquery -->
-<script src="assets/jquery.js"></script>
+
 
 <!-- wow script -->
 <script src="assets/wow/wow.min.js"></script>
@@ -109,6 +113,9 @@
 
 <!-- custom script -->
 <script src="assets/script.js"></script>
+
+{{--calendar--}}
+<script src="calendar/js/responsive-calendar.js"></script>
 
 </body>
 </html>
