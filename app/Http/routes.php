@@ -1,10 +1,7 @@
 <?php
 
-
-Route::get('/', function () {
-    return view('admin/admin_widget');
-});
-
+// Route to Dashboard/Admin panel
+Route::get('/', 'AdminPagesController@open');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
@@ -12,13 +9,20 @@ Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 // Registration routes...
-//Route::get('auth/register', 'Auth\AuthController@getRegister');
+
 Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+
+// Routes in Admin Panel
+Route::resource('event/','EventController',[
+    'except' => ['edit']
+]);
+Route::get('event/edit/{id}', 'EventController@edit');
 
 // Route to Dashboard/Admin panel
 Route::get('/home', 'AdminPagesController@home');
 
 // Route to add user
 Route::get('create_user', 'AdminPagesController@create_user');
-   
+
 
