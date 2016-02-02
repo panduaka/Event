@@ -16,7 +16,7 @@ class AdminPagesController extends Controller
      */
     public function home()
     {
-        return ('hoem page admin panel');
+        return view('admin\admin_widget');
     }
 
     /**
@@ -30,11 +30,11 @@ class AdminPagesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new event.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createEvent()
     {
         //
     }
@@ -93,5 +93,38 @@ class AdminPagesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+     /**
+     *Raajitha
+     * Create a new User
+     *
+     */
+    public function create_user()
+    {
+         if(Auth::check()) 
+         {
+             return view('auth.register');
+             // return ('home page admin panel');
+         }
+
+     }
+     /**
+    *Raajitha
+     * redirect to admin_widget page or login page
+     *
+     * 
+     */
+    protected function open()
+    {
+        if(Auth::check()) 
+         {
+             return view('admin/admin_widget');
+             // return ('home page admin panel');
+         }
+         else
+         {
+            return view('auth/login');
+         }
     }
 }
