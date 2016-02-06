@@ -39,26 +39,30 @@
                                 <div class="col-md-6">
                                     <div class="form-group has-feedback">
                                         <label for="name" class="required">Name</label>
-                                        <input type="string" id="name" class="form-control" name="name" maxlength="80">
+                                        <input type="text" id="name" class="form-control" name="name" maxlength="80">
                                     </div>
                                     <div class="form-group has-feedback">
                                         <label for="venue" class="required">Venue</label>
-                                        <input type="string" id="venue" class="form-control" name="venue">
+                                        <input type="text" id="venue" class="form-control" name="venue">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group has-feedback">
+                                            <label for="from" class="required">From</label>
+                                            <input type="datetime" id='datetimepickerFrom' class="form-control" name="from" placeholder="DD/MM/YYYY hh:mm PM">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group has-feedback">
+                                            <label for="to" class="required">To</label>
+                                            <input type="datetime" id='datetimepickerTo' class="form-control" name="to" placeholder="DD/MM/YYYY hh:mm PM">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group has-feedback">
-                                        <label for="date" class="required">Date</label>
-                                        <input type="date" id="date" class="form-control" name="date">
+                                        <label for="description" class="required">Description</label>
+                                        <textarea id="description" name="description" class="form-control" rows="9"></textarea>
                                     </div>
-                                    <div class="form-group has-feedback">
-                                        <label for="time" class="required">Time</label>
-                                        <input type="text" class="form-control" name="time">
-                                    </div>
-                                </div>
-                                <div class="form-group has-feedback col-md-12">
-                                    <label for="description" class="required">Description</label>
-                                    <textarea id="description" name="description" class="form-control" rows="3"></textarea>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group has-feedback">
@@ -119,4 +123,16 @@
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
 
+@endsection
+@section('scripts')
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepickerTo').datetimepicker({
+                format: 'YYYY-MM-DD HH:mm:ss'
+            });
+            $('#datetimepickerFrom').datetimepicker({
+                format: 'YYYY-MM-DD HH:mm:ss'
+            });
+        });
+    </script>
 @endsection

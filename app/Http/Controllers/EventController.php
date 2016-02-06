@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
 
-class NewController extends Controller
+class EventController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -46,7 +46,8 @@ class NewController extends Controller
         // Validation //
         $validation = Validator::make($request->all(), [
             'name' => 'required',
-            'time' => 'required',
+            'from' => 'required',
+//            'to' => 'required',
             'venue' => 'required',
             'description' => 'required',
             'photo_feature' => 'required|image|mimes:jpeg,png',
@@ -70,68 +71,30 @@ class NewController extends Controller
         // Process valid data & go to success page //
         $event = new Event;
         $event->name = $request->input('name');
-        $event->time = $request->input('time');
+        $event->from = $request->input('from');
+        $event->to = $request->input('to');
         $event->venue = $request->input('venue');
         $event->description = $request->input('description');
 
         $destination_path = "uploads/pictures/events/";
         $eventName = str_replace(' ', '-',$request->name);
 
-        $extension = $request->file('photo_feature')->getClientOriginalExtension();
-        $photo="event-".$eventName."-photo-feature.".$extension;
-        $request->file('photo_feature')->move($destination_path, $photo);
-        $event->photo_feature = $photo;
+        //Image variable list
+        $imageList = ['photo_feature','photo_more','photo_1','photo_2','photo_3','photo_4','photo_5','photo_6','photo_7','photo_8'];
+        $imageNameList = ['-photo-feature.','-photo-more.','-photo-1.','-photo-2.','-photo-3.','-photo-4.','-photo-5.','-photo-6.','-photo-7.','-photo-8.'];
 
-        $extension = $request->file('photo_more')->getClientOriginalExtension();
-        $photo ="event-".$eventName."-photo-more.".$extension;
-        $request->file('photo_more')->move($destination_path, $photo);
-        $event->photo_more = $photo;
+        //Same Images to Event objects
+        for($i=0; $i<10; $i++){
 
-        $extension = $request->file('photo_1')->getClientOriginalExtension();
-        $photo ="event-".$eventName."-photo-1.".$extension;
-        $request->file('photo_1')->move($destination_path, $photo);
-        $event->photo_1 = $photo;
-
-        $extension = $request->file('photo_2')->getClientOriginalExtension();
-        $photo ="event-".$eventName."-photo-2.".$extension;
-        $request->file('photo_2')->move($destination_path, $photo);
-        $event->photo_2 = $photo;
-
-        $extension = $request->file('photo_3')->getClientOriginalExtension();
-        $photo ="event-".$eventName."-photo-3.".$extension;
-        $request->file('photo_3')->move($destination_path, $photo);
-        $event->photo_3 = $photo;
-
-        $extension = $request->file('photo_4')->getClientOriginalExtension();
-        $photo ="event-".$eventName."-photo-4.".$extension;
-        $request->file('photo_4')->move($destination_path, $photo);
-        $event->photo_4 = $photo;
-
-        $extension = $request->file('photo_5')->getClientOriginalExtension();
-        $photo ="event-".$eventName."-photo-5.".$extension;
-        $request->file('photo_5')->move($destination_path, $photo);
-        $event->photo_5 = $photo;
-
-        $extension = $request->file('photo_6')->getClientOriginalExtension();
-        $photo ="event-".$eventName."-photo-6.".$extension;
-        $request->file('photo_6')->move($destination_path, $photo);
-        $event->photo_6 = $photo;
-
-        $extension = $request->file('photo_7')->getClientOriginalExtension();
-        $photo ="event-".$eventName."-photo-7.".$extension;
-        $request->file('photo_7')->move($destination_path, $photo);
-        $event->photo_7 = $photo;
-
-        $extension = $request->file('photo_8')->getClientOriginalExtension();
-        $photo ="event-".$eventName."-photo-8.".$extension;
-        $request->file('photo_8')->move($destination_path, $photo);
-        $event->photo_8 = $photo;
+            $extension = $request->file($imageList[$i])->getClientOriginalExtension();
+            $photo="event-".$eventName.$imageNameList[$i].$extension;
+            $request->file($imageList[$i])->move($destination_path, $photo);
+            $event->$imageList[$i] = $photo;
+        }
 
         $event->save();
 
-        return redirect('/admin')->with('message','You just Created and Event!');
-
-//        return view('admin.admin_widget');
+        return redirect('/home')->with('message','You just Created an Event!');
     }
 
     /**
@@ -168,7 +131,59 @@ class NewController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $event = Event::find($id);
+
+        // Validation //
+        $validation = Validator::make($request->all(), [
+            'name' => 'required',
+            'from' => 'required',
+            'to' => 'required',
+            'venue' => 'required',
+            'description' => 'required',
+        ]);
+
+        // Check if it fails //
+        if( $validation->fails() ){
+            return redirect()->back()->withInput()
+                ->with('errors', $validation->errors() );
+        }
+
+        //Writing into database
+        if(!equalTo($event->name,$request->input('name'))){
+            $event->name = $request->input('name');
+        }
+        if(!equalTo($event->from,$request->input('from'))){
+            $event->from = $request->input('from');
+        }
+        if(!equalTo($event->to,$request->input('to'))){
+            $event->to = $request->input('to');
+        }
+        if(!equalTo($event->venue,$request->input('venue'))){
+            $event->venue = $request->input('venue');
+        }
+        if(!equalTo($event->description,$request->input('description'))){
+            $event->description = $request->input('description');
+        }
+
+        //Image variable list
+        $imageList = ['photo_feature','photo_more','photo_1','photo_2','photo_3','photo_4','photo_5','photo_6','photo_7','photo_8'];
+        $imageNameList = ['-photo-feature.','-photo-more.','-photo-1.','-photo-2.','-photo-3.','-photo-4.','-photo-5.','-photo-6.','-photo-7.','-photo-8.'];
+
+        $destination_path = "uploads/pictures/events/";
+        $eventName = str_replace(' ', '-',$request->name);
+
+        for($i=0; $i<10; $i++){
+            if($request->hasFile($imageList[$i])){
+                $extension = $request->file($imageList[$i])->getClientOriginalExtension();
+                $photo="event-".$eventName.$imageNameList[$i].$extension;
+                $request->file($imageList[$i])->move($destination_path, $photo);
+                $event->$imageList[$i] = $photo;
+            }
+        }
+
+        $event->save();
+
+        return redirect('/home')->with('message','Event '.$request->input('name').' Updated!');
     }
 
     /**

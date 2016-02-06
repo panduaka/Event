@@ -15,9 +15,10 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 // Routes in Admin Panel
 Route::resource('event/','EventController',[
-    'except' => ['edit']
+    'except' => ['edit','update ']
 ]);
-Route::get('event/edit/{id}', 'EventController@edit');
+Route::get('event/{id}/edit', 'EventController@edit');
+Route::patch('event/{id}/update','EventController@update');
 
 // Route to Dashboard/Admin panel
 Route::get('/home', 'AdminPagesController@home');
