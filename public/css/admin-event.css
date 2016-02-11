@@ -1,0 +1,6 @@
+.editImagePreview{
+    height: 150px;
+    width: 200px;
+    border: 3px solid rgba(5, 10, 5, 0.86);
+    text-align: center;
+}
