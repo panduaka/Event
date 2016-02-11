@@ -1,22 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Responsive Calendar Widget that will make your day</title>
-    <meta name="distributor" content="Global" />
-    <meta itemprop="contentRating" content="General" />
-    <meta name="robots" content="All" />
-    <meta name="revisit-after" content="7 days" />
-    <meta name="description" content="The source of truly unique and awesome jquery plugins." />
-    <meta name="keywords" content="slider, carousel, responsive, swipe, one to one movement, touch devices, jquery, plugin, bootstrap compatible, html5, css3" />
-    <meta name="author" content="w3widgets.com">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link href='http://fonts.googleapis.com/css?family=Economica' rel='stylesheet' type='text/css'>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
     <!-- Respomsive slider -->
     <link href="calendar/css/responsive-calendar.css" rel="stylesheet">
-    <script src="calendar/js/jquery.js"></script>
+    <script src="assets/jquery.js"></script>
 </head>
 <body>
 <div class="container">
@@ -42,6 +33,18 @@
     </div>
     <!-- Responsive calendar - END -->
 </div>
+<!-- HTML to write -->
+<a href="#" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?" data-trigger="hover">Hover over me</a>
+<p id='container'>
+    <button class='btn btn-primary btn-large' data-popover="true" data-html=true data-content="<a href='http://www.wojt.eu' target='blank' >click me, I'll try not to disappear</a>">hover here</button>
+</p>
+
+
+
+
+
+
+
 
 <!-- boostrap -->
 <script src="assets/bootstrap/js/bootstrap.js" type="text/javascript" ></script>
@@ -57,6 +60,31 @@
                 "2013-06-12": {}}
         });
     });
+
+  /*popover starts*/
+    var originalLeave = $.fn.popover.Constructor.prototype.leave;
+    $.fn.popover.Constructor.prototype.leave = function(obj){
+        var self = obj instanceof this.constructor ?
+                obj : $(obj.currentTarget)[this.type](this.getDelegateOptions()).data('bs.' + this.type)
+        var container, timeout;
+
+        originalLeave.call(this, obj);
+
+        if(obj.currentTarget) {
+            container = $(obj.currentTarget).siblings('.popover')
+            timeout = self.timeout;
+            container.one('mouseenter', function(){
+                //We entered the actual popover – call off the dogs
+                clearTimeout(timeout);
+                //Let's monitor popover content instead
+                container.one('mouseleave', function(){
+                    $.fn.popover.Constructor.prototype.leave.call(self, self);
+                });
+            })
+        }
+    };
+    $('body').popover({ selector: '[data-popover]', trigger: 'click hover', placement: 'right', content :'content', delay: {show: 50, hide: 400}});
+// popover ends
 </script>
 </body>
 </html>

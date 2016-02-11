@@ -34,6 +34,7 @@
 .responsive-calendar .day.active a {
   background-color: #1d86c8;
   color: #ffffff;
+  border-radius: 50%;
 }
 .responsive-calendar .day.active a:hover {
   background-color: #36a0e2;

@@ -9,7 +9,6 @@
   # Copyright © w3widgets 2013 All Rights Reserved
 */
 
-
 (function() {
 
   (function($) {
@@ -183,9 +182,40 @@
             for (i = _i = 0, _len = classes.length; _i < _len; i = ++_i) {
               eventClass = classes[i];
               day.addClass(eventClass);
+              //day.append($("<a>" + dayNum + "</a>").attr("data-day", dayNum).attr("data-month", monthNum).attr("data-year", yearNum));
+
             }
           } else {
             day.addClass("active");
+
+            var EventDate = day[0].getElementsByTagName("a")[0].getAttribute('data-year')+"-"+day[0].getElementsByTagName("a")[0].getAttribute('data-month')+"-"+day[0].getElementsByTagName("a")[0].getAttribute('data-day');
+            day[0].getElementsByTagName("a")[0].setAttribute("data-popover", true)
+            day[0].getElementsByTagName("a")[0].setAttribute("data-html", true)
+
+            // geting events on date
+            var content = "<div>";
+            $.ajax({
+              url: "../getEvents/"+EventDate,
+              type: "get",
+              dataType: 'json',
+             // async:true,
+              success: function(data){
+                console.log(data);
+                data.forEach(function(event){
+                  content+="<a href='/event/"+event.name+"' style='background-color:white; border-radius:0px; color: black; padding: 0px; width: auto;'>"+event.name+"</a>"+"<br>";
+                });
+                content+="</div>";
+                console.log(content);
+                day[0].getElementsByTagName("a")[0].setAttribute("data-content", content);
+               // day[0].getElementsByTagName("a")[0].innerHTML( content);
+               // console.log(content);
+              },
+              error: function(data)
+              {
+                console.log("error",data);
+              }
+            });
+
           }
           day = this.addOthers(day, dayEvents);
         }
