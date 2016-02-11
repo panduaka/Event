@@ -12,7 +12,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
-
+use Auth;
 class EventController extends Controller
 {
     /**
@@ -32,6 +32,11 @@ class EventController extends Controller
      */
     public function create()
     {
+        if(Auth::check())
+        {
+            return view('auth.register');
+            // return ('home page admin panel');
+        }
         return view('admin.event_create');
     }
 
@@ -116,6 +121,11 @@ class EventController extends Controller
      */
     public function edit($id)
     {
+        if(Auth::check())
+        {
+            return view('auth.register');
+            // return ('home page admin panel');
+        }
         $event = Event::find($id);
 
 //        $isAdmin = User::isAdmin();

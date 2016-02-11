@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Auth;
 class AdminPagesController extends Controller
 {
     /**
@@ -102,11 +102,14 @@ class AdminPagesController extends Controller
      */
     public function create_user()
     {
-         if(Auth::check()) 
-         {
-             return view('auth.register');
-             // return ('home page admin panel');
-         }
+        if(Auth::check())
+        {
+            return view('auth.register');
+        }
+        else
+        {
+            return view('auth.login');
+        }
 
      }
      /**
